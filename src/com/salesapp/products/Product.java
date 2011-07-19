@@ -3,6 +3,8 @@
  */
 package com.salesapp.products;
 
+import com.salesapp.productfactories.ProductFactory;
+
 
 
 
@@ -186,4 +188,11 @@ public abstract class Product
 			return "imported";
 		}
 	}
+	
+	/**
+	 * Gets the factory object to create a product.
+	 *
+	 * @return ProductFactory
+	 */
+	public abstract ProductFactory getFactory();
 }

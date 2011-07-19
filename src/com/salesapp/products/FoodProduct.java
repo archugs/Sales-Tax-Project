@@ -3,6 +3,9 @@
  */
 package com.salesapp.products;
 
+import com.salesapp.productfactories.FoodProductFactory;
+import com.salesapp.productfactories.ProductFactory;
+
 /**
  * FoodProduct is an item belonging to the category 'Food' in the shopping store.
  *
@@ -30,6 +33,19 @@ public class FoodProduct extends Product {
 	public FoodProduct(String name, double price, boolean imported, int quantity) 
 	{
 		super(name, price, imported, quantity);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return FoodProductFactory
+	 */
+	@Override
+	public FoodProductFactory getFactory() 
+	{
+		
+		return new FoodProductFactory();
 		
 	}
 

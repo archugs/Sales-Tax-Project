@@ -3,6 +3,9 @@
  */
 package com.salesapp.products;
 
+import com.salesapp.productfactories.MedicalProductFactory;
+import com.salesapp.productfactories.ProductFactory;
+
 /**
  * MedicalProduct is an item belonging to the category 'Medical' in the shopping store.
  *
@@ -33,4 +36,15 @@ public class MedicalProduct extends Product {
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return MedicalProductFactory
+	 */
+	@Override
+	public MedicalProductFactory getFactory()
+	{
+		return new MedicalProductFactory();
+		
+	}
 }

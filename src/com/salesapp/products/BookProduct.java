@@ -3,6 +3,9 @@
  */
 package com.salesapp.products;
 
+import com.salesapp.productfactories.BookProductFactory;
+import com.salesapp.productfactories.ProductFactory;
+
 
 /**
  * BookProduct is an item belonging to the category 'Book' in the shopping store.
@@ -33,4 +36,15 @@ public class BookProduct extends Product {
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return BookProductFactory
+	 */
+	@Override
+	public BookProductFactory getFactory() 
+	{
+		return new BookProductFactory();
+		
+	}
 }

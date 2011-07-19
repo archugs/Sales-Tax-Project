@@ -3,6 +3,9 @@
  */
 package com.salesapp.products;
 
+import com.salesapp.productfactories.MiscellaneousProductFactory;
+import com.salesapp.productfactories.ProductFactory;
+
 /**
  * MiscellaneousProduct is an item belonging to the category 'Miscellaneous' in the shopping store.
  *
@@ -31,6 +34,18 @@ public class MiscellaneousProduct extends Product {
 	{
 		super(name, price, imported, quantity);
 		
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return MiscellaneousProductFactory
+	 */
+	@Override
+	public MiscellaneousProductFactory getFactory() 
+	{
+		
+		return new MiscellaneousProductFactory();
 	}
 
 }
