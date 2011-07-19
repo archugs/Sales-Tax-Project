@@ -10,11 +10,10 @@ import org.junit.Test;
 
 import com.salesapp.products.*;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ShoppingCartTest.
+ * The ShoppingCartTest is used to test the ShoppingCart class.
  *
- * @author user
+ * @author archugs
  */
 public class ShoppingCartTest {
 
@@ -24,7 +23,7 @@ public class ShoppingCartTest {
 	Product product;
 	
 	/**
-	 * Initialize the fixture.
+	 * Initializes the fixture.
 	 */
 	@Before
 	public void setUp()

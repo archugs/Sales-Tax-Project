@@ -3,6 +3,8 @@
  */
 package com.salesapp.products;
 
+import com.salesapp.productfactories.ProductFactory;
+
 /** MockProduct is a mock object used to test the abstract Product class.
  * 
  * @author user
@@ -30,6 +32,15 @@ public class MockProduct extends Product {
 	{
 		super(name, price, imported, quantity);
 		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.salesapp.products.Product#getFactory()
+	 */
+	@Override
+	public ProductFactory getFactory() 
+	{	
+		return null;
 	}
 
 }
