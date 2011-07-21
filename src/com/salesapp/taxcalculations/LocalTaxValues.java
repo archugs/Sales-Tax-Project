@@ -6,7 +6,7 @@ package com.salesapp.taxcalculations;
 
 
 /**
- * The Enum LocalTaxValues contains local tax rates of different products.
+ * The Enum LocalTaxValues contains tax rates of different products in the local region.
  *
  * @author archugs
  */

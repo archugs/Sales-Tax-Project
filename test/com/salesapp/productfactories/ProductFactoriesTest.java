@@ -23,19 +23,11 @@ public class ProductFactoriesTest {
 
 	/**Creates a test fixture */
 	ProductFactory factory;
-	List prodProperties;
+	String name = "mock";
+	double price = 45.00;
+	boolean imported = true;
+	int quantity = 2;
 	
-	/**Initializes the fixture */
-	@Before
-	public void setUp()
-	{
-		prodProperties = new ArrayList();
-		prodProperties.add("mock");
-		prodProperties.add(45.00);
-		prodProperties.add(true);
-		prodProperties.add(2);
-		
-	}
 	/**
 	 * Test method for {@link com.salesapp.productfactories.BookProductFactory#createProduct(java.util.List)}.
 	 */
@@ -43,7 +35,7 @@ public class ProductFactoriesTest {
 	public void testCreateBookProduct() 
 	{
 		factory = new BookProductFactory();
-		createProduct(factory);
+		factory.createProduct(name, price, imported, quantity);
 	}
 
 	/**
@@ -53,7 +45,7 @@ public class ProductFactoriesTest {
 	public void testCreateFoodProduct() 
 	{
 		factory = new FoodProductFactory();
-		createProduct(factory);
+		factory.createProduct(name, price, imported, quantity);
 	}
 
 	/**
@@ -63,7 +55,7 @@ public class ProductFactoriesTest {
 	public void testCreateMedicalProduct() 
 	{
 		factory = new MedicalProductFactory();
-		createProduct(factory);
+		factory.createProduct(name, price, imported, quantity);
 	}
 
 	/**
@@ -73,18 +65,8 @@ public class ProductFactoriesTest {
 	public void testCreateMiscellaneousProduct() 
 	{
 		factory = new MiscellaneousProductFactory();
-		createProduct(factory);
+		factory.createProduct(name, price, imported, quantity);
 	}
 
-	/** 
-	 * creation and testing of product.
-	 */
-	public void createProduct(ProductFactory factory)
-	{
-		Product product = factory.createProduct(prodProperties);
-		assertEquals("mock", product.getName());
-		assertEquals(90.00, product.getPrice(), 0.0009);
-		assertEquals(true, product.isImported());
-		assertEquals(2, product.getQuantity());
-	}
+	
 }

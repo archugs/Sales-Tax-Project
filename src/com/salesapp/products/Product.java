@@ -197,7 +197,7 @@ public abstract class Product
 	public abstract ProductFactory getFactory();
 	
 	/** 
-	 * Gets the tax value of the product.
+	 * Gets the tax value of the product in a particular region.
 	 * 
 	 * @param country - the regional tax rates 
 	 * @return double

@@ -24,20 +24,12 @@ import com.salesapp.products.Product;
 public class StoreShelfTest {
 
 	/** Creates a test fixture */
-	StoreShelf shelf;
-	List prodProperties;
+	StoreShelf shelf = new StoreShelf();
+	String name = "box of chocolates";
+	double price = 45.00;
+	boolean imported = true;
+	int quantity = 2;
 	
-	/** Initializes the test fixture */
-	@Before
-	public void setUp()
-	{
-		shelf = new StoreShelf();
-		prodProperties = new ArrayList();
-		prodProperties.add("box of chocolates");
-		prodProperties.add(45.00);
-		prodProperties.add(true);
-		prodProperties.add(2);
-	}
 	
 	/**
 	 * Test method for {@link com.salesapp.shopdomain.StoreShelf#StoreShelf()}.
@@ -66,7 +58,7 @@ public class StoreShelfTest {
 	@Test
 	public void testSearchAndRetrieveItemFromShelf() 
 	{
-		Product product = shelf.searchAndRetrieveItemFromShelf(prodProperties);
+		Product product = shelf.searchAndRetrieveItemFromShelf(name, price, imported, quantity);
 		assertEquals("box of chocolates", product.getName());
 		assertEquals(90.00, product.getPrice(), 0.0009);
 		assertEquals(true, product.isImported());

@@ -18,12 +18,8 @@ public class FoodProductFactory extends ProductFactory {
 	 * @return FoodProduct
 	 */
 	@Override
-	public FoodProduct createProduct(List productProperties) 
+	public FoodProduct createProduct(String name, double price, boolean imported, int quantity) 
 	{
-		String name = (String)(productProperties.get(0));
-		Double price = (Double)(productProperties.get(1));
-		Boolean imported = (Boolean)(productProperties.get(2));
-		Integer quantity = (Integer)(productProperties.get(3));
 		return new FoodProduct(name, price, imported, quantity);
 	}
 

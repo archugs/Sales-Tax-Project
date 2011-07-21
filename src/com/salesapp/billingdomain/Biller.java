@@ -1,0 +1,96 @@
+/**
+ * 
+ */
+package com.salesapp.billingdomain;
+
+import java.util.List;
+
+import com.salesapp.products.Product;
+import com.salesapp.taxcalculations.ITaxCalculator;
+
+/**
+ * The Biller computes the product's taxed cost, the total tax value, and total amount of all products.
+ * 
+ * @author archugs
+ */
+public class Biller 
+{
+
+	/** The tax calculator. */
+	ITaxCalculator taxCalculator;
+	
+	/**
+	 * Instantiates a new biller.
+	 *
+	 * @param taxCalc - the tax calculator
+	 */
+	public Biller(ITaxCalculator taxCalc)
+	{
+		taxCalculator = taxCalc;
+	}
+	
+	/**
+	 * Calculates the total product tax using tax calculator.
+	 * 
+	 * @param price - the price of the product
+	 * @param tax - the product's tax rate
+	 * @param imported - boolean value of whether product imported or not
+	 * @return double
+	 */
+	public double calculateTax(double price, double tax, boolean imported)
+	{
+		
+		double totalProductTax = taxCalculator.calculateTax(price, tax, imported);
+		return totalProductTax;
+	}
+	
+	/**
+	 * Calculates the taxed cost of the product which is the sum of the original price and tax value.
+	 * 
+	 * @param price - the price of the product
+	 * @param tax - the product's tax value
+	 * @return double
+	 */
+	public double calcTotalProductCost(double price, double tax)
+	{
+		return price + tax;
+	}
+	
+	/**
+	 * Computes the net tax values of all products.
+	 * 
+	 * @param prodList - the list of all products 
+	 * @return double
+	 */
+	public double calcTotalTax(List<Product> prodList)
+	{
+		double totalTax = 0.0;
+		
+		//Calculates the tax value which is the difference between the taxed cost and original cost.
+		for(Product p : prodList)
+		{
+			totalTax += (p.getTaxedCost() - p.getPrice());
+		}
+		
+		return totalTax;
+	}
+	
+	/**
+	 * Computes the net amount of all the products.
+	 * 
+	 * @param prodList - the list of all products
+	 * @return double
+	 */
+	public double calcTotalAmount(List<Product> prodList)
+	{
+		double totalAmount = 0.0;
+		
+		//Sums the total cost of all products.
+		for(Product p : prodList)
+		{
+			totalAmount += p.getTaxedCost();
+		}
+		
+		return totalAmount;
+	}
+}

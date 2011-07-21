@@ -17,13 +17,8 @@ public class MedicalProductFactory extends ProductFactory {
 	 * @return MedicalProduct
 	 */
 	@Override
-	public MedicalProduct createProduct(List productProperties) 
+	public MedicalProduct createProduct(String name, double price, boolean imported, int quantity) 
 	{
-		
-		String name = (String)(productProperties.get(0));
-		Double price = (Double)(productProperties.get(1));
-		Boolean imported = (Boolean)(productProperties.get(2));
-		Integer quantity = (Integer)(productProperties.get(3));
 		return new MedicalProduct(name, price, imported, quantity);
 	}
 

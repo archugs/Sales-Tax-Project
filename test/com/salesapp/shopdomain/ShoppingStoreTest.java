@@ -20,33 +20,19 @@ public class ShoppingStoreTest {
 	/** Test fixture */
 	ShoppingStore store = new ShoppingStore();
 	
+	
 	/**
 	 * Test method for {@link com.salesapp.shopdomain.ShoppingStore#retrieveOrderAndPlaceInCart(java.util.List)}.
 	 */
 	@Test
 	public void testRetrieveOrderAndPlaceInCart() 
 	{
-		List prodProperties = new ArrayList();
-		prodProperties.add("box of chocolates");
-		prodProperties.add(45.00);
-		prodProperties.add(true);
-		prodProperties.add(2);
-		store.retrieveOrderAndPlaceInCart(prodProperties);
-		assertEquals(1, store.getCart().getCartSize());
-	}
-
-	/**
-	 * Test method for {@link com.salesapp.shopdomain.ShoppingStore#getProductPropertiesList(java.lang.String, double, boolean, int)}.
-	 */
-	@Test
-	public void testGetProductPropertiesList() 
-	{
 		String name = "box of chocolates";
-		double price = 40.00;
-		boolean imported = false;
-		int quantity = 3;
-		List l = store.getProductPropertiesList(name, price, imported, quantity);
-		assertEquals(4, l.size());
+		double price = 45.00;
+		boolean imported = true;
+		int quantity = 2;
+		store.retrieveOrderAndPlaceInCart(name, price, imported, quantity);
+		assertEquals(1, store.getCart().getCartSize());
 	}
 
 	/**

@@ -19,12 +19,8 @@ public class BookProductFactory extends ProductFactory {
 	 * @return BookProduct	
 	 */
 	@Override
-	public BookProduct createProduct(List productProperties) 
+	public BookProduct createProduct(String name, double price, boolean imported, int quantity) 
 	{
-			String name = (String)(productProperties.get(0));
-			Double price = (Double)(productProperties.get(1));
-			Boolean imported = (Boolean)(productProperties.get(2));
-			Integer quantity = (Integer)(productProperties.get(3));
 			return new BookProduct(name, price, imported, quantity);
 	}
 

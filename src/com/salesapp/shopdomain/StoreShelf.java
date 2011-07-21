@@ -46,14 +46,15 @@ public class StoreShelf {
 	/**
 	 * Searches for the item using the string name and maps it to the product category to create a new Product object.
 	 *
-	 * @param productProperties - the properties of the product
-	 * 
+	 * @param name - name of the product
+	 * @param price - price of product
+	 * @param imported - boolean value of whether imported or not
+	 * @param quantity - quantity of product
 	 * @return Product
 	 */
-	public Product searchAndRetrieveItemFromShelf(List productProperties)
+	public Product searchAndRetrieveItemFromShelf(String name, double price, boolean imported, int quantity)
 	{
-		String prodItemName = (String)(productProperties.get(0));
-		Product productItem = productItems.get(prodItemName).getFactory().createProduct(productProperties);
+		Product productItem = productItems.get(name).getFactory().createProduct(name, price, imported, quantity);
 		return productItem;
 	}
 	
