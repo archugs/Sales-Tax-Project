@@ -5,6 +5,7 @@ package com.salesapp.products;
 
 import com.salesapp.productfactories.FoodProductFactory;
 import com.salesapp.productfactories.ProductFactory;
+import com.salesapp.taxcalculations.LocalTaxValues;
 
 /**
  * FoodProduct is an item belonging to the category 'Food' in the shopping store.
@@ -47,6 +48,22 @@ public class FoodProduct extends Product {
 		
 		return new FoodProductFactory();
 		
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public double getTaxValue(String country) 
+	{
+		if(country == "Local")
+		{
+			return LocalTaxValues.FOOD_TAX.getTax();
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
 }

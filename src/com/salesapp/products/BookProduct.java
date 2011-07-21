@@ -5,6 +5,7 @@ package com.salesapp.products;
 
 import com.salesapp.productfactories.BookProductFactory;
 import com.salesapp.productfactories.ProductFactory;
+import com.salesapp.taxcalculations.LocalTaxValues;
 
 
 /**
@@ -46,5 +47,21 @@ public class BookProduct extends Product {
 	{
 		return new BookProductFactory();
 		
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public double getTaxValue(String country)
+	{		
+		if(country == "Local")
+		{
+			return LocalTaxValues.BOOK_TAX.getTax();
+		}
+		else
+		{
+			return 0;
+		}
 	}
 }

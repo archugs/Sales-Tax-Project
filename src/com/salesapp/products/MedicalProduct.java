@@ -5,6 +5,7 @@ package com.salesapp.products;
 
 import com.salesapp.productfactories.MedicalProductFactory;
 import com.salesapp.productfactories.ProductFactory;
+import com.salesapp.taxcalculations.LocalTaxValues;
 
 /**
  * MedicalProduct is an item belonging to the category 'Medical' in the shopping store.
@@ -47,4 +48,21 @@ public class MedicalProduct extends Product {
 		return new MedicalProductFactory();
 		
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public double getTaxValue(String country) 
+	{
+		if(country == "Local")
+		{
+		return LocalTaxValues.MEDICAL_TAX.getTax();
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
 }

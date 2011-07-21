@@ -17,7 +17,7 @@ import com.salesapp.products.Product;
 
 
 /**
- * The StoreShelfTest tests the StoreShelf class methods.
+ * Test case for {@link com.salesapp.shopdomain.StoreShelf}
  * 
  * @author archugs
  */

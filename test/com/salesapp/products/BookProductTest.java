@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * The BookProductTest tests the BookProduct class.
+ * Test case for {@link com.salesapp.products.BookProduct)
  * 
  * @author archugs
  */
@@ -44,4 +44,14 @@ public class BookProductTest {
 		assertEquals(3, p.getQuantity());
 	}
 
+	
+	/**
+	 * Test method for {@link com.salesapp.products.BookProduct#getTaxValue(String)}.
+	 */
+	@Test
+	public void testGetTaxValue()
+	{
+		p = new BookProduct("book", 95.00, true, 3);
+		assertEquals(0.0, p.getTaxValue("Local"), 0.0009);
+	}
 }

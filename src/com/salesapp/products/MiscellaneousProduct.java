@@ -5,6 +5,7 @@ package com.salesapp.products;
 
 import com.salesapp.productfactories.MiscellaneousProductFactory;
 import com.salesapp.productfactories.ProductFactory;
+import com.salesapp.taxcalculations.LocalTaxValues;
 
 /**
  * MiscellaneousProduct is an item belonging to the category 'Miscellaneous' in the shopping store.
@@ -47,5 +48,20 @@ public class MiscellaneousProduct extends Product {
 		
 		return new MiscellaneousProductFactory();
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public double getTaxValue(String country)
+	{
+		if(country == "Local")
+		{
+		return LocalTaxValues.MISC_TAX.getTax();
+		}
+		else
+		{
+			return 0;
+		}
+	}
 }

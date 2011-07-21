@@ -34,13 +34,22 @@ public class MockProduct extends Product {
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see com.salesapp.products.Product#getFactory()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public ProductFactory getFactory() 
 	{	
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public double getTaxValue(String country) 
+	{
+		return 0;
 	}
 
 }

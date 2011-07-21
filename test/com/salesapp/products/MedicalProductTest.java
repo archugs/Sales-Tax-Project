@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * The MedicalProductTest tests the MedicalProduct class.
+ * Test case for {@link com.salesapp.products.MedicalProduct)
  * 
  * @author archugs
  */
@@ -41,6 +41,16 @@ public class MedicalProductTest {
 		assertEquals(285.0, p.getPrice(), 0.0009);
 		assertEquals(true, p.isImported());
 		assertEquals(3, p.getQuantity());
+	}
+	
+	/**
+	 * Test method for {@link com.salesapp.products.MedicalProduct#getTaxValue(String)}.
+	 */
+	@Test
+	public void testGetTaxValue()
+	{
+		p = new MedicalProduct("a packet of headache pills", 95.00, true, 3);
+		assertEquals(0.0, p.getTaxValue("Local"), 0.0009);
 	}
 
 }

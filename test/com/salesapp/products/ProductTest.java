@@ -10,7 +10,7 @@ import org.junit.Test;
 
 
 /**
- * The ProductTest tests the Product class's concrete methods.
+ * Test case for {@link com.salesapp.products.Product)
  *
  * @author archugs
  */

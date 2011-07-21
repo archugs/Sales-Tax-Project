@@ -11,7 +11,7 @@ import java.util.List;
 import org.junit.Test;
 
 /**
- * The ShoppingStoreTest tests the ShoppingStore class methods.
+ * Test case for {@link com.salesapp.shopdomain.ShoppingStore}
  * 
  * @author archugs
  */

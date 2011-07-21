@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.salesapp.products.*;
 
 /**
- * The ShoppingCartTest is used to test the ShoppingCart class.
+ * Test case for {@link com.salesapp.shopdomain.ShoppingCart}
  *
  * @author archugs
  */

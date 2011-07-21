@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * The MiscellaneousProductTest tests the MiscellaneousProduct class.
+ * Test case for {@link com.salesapp.products.MiscellaneousProduct)
  * 
  * @author archugs
  */
@@ -43,4 +43,13 @@ public class MiscellaneousProductTest {
 		assertEquals(3, p.getQuantity());
 	}
 
+	/**
+	 * Test method for {@link com.salesapp.products.MiscellaneousProduct#getTaxValue(String)}.
+	 */
+	@Test
+	public void testGetTaxValue()
+	{
+		p = new MiscellaneousProduct("a bottle of perfume", 95.00, true, 3);
+		assertEquals(0.10, p.getTaxValue("Local"), 0.0009);
+	}
 }

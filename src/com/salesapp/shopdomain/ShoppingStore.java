@@ -26,7 +26,7 @@ public class ShoppingStore
 	private StoreShelf ss;
 	
 	/** gets user input of products */
-	Scanner input;
+	private Scanner input;
 	
 	/**
 	 * Instantiates a new shopping store containing a shopping cart and storeshelf.

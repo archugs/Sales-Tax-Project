@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * The FoodProductTest tests the FoodProduct class.
+ * Test case for {@link com.salesapp.products.FoodProduct)
  * 
  * @author archugs
  */
@@ -41,6 +41,16 @@ public class FoodProductTest {
 		assertEquals(285.0, p.getPrice(), 0.0009);
 		assertEquals(true, p.isImported());
 		assertEquals(3, p.getQuantity());
+	}
+	
+	/**
+	 * Test method for {@link com.salesapp.products.FoodProduct#getTaxValue(String)}.
+	 */
+	@Test
+	public void testGetTaxValue()
+	{
+		p = new FoodProduct("a box of chocolates", 95.00, true, 3);
+		assertEquals(0.0, p.getTaxValue("Local"), 0.0009);
 	}
 
 }
