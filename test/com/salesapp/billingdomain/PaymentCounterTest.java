@@ -55,5 +55,15 @@ public class PaymentCounterTest
 		assertEquals(97.9, misc.getTaxedCost(), 0.0009);
 		
 	}
+	
+	/**
+	 * Test method for {@link com.salesapp.billingdomain.PaymentCounter#getReceipt()}.
+	 */
+	@Test
+	public void testGetReceipt()
+	{
+		pay.billItemsInCart();
+		pay.getReceipt();
+	}
 
 }

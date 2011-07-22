@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.salesapp.billingdomain.PaymentCounter;
 import com.salesapp.products.Product;
 
 
@@ -26,16 +27,24 @@ public class ShoppingStore
 	/** The storeshelf contains the products of the store. */
 	private StoreShelf ss;
 	
+	/** The payment counter performs billing and generates receipt. */
+	private PaymentCounter pc;
+	
 	/** gets user input of products. */
 	private Scanner input;
+
+	/** The regional province where sales tax and imported duty applied. */
+	String country;
 	
 	/**
-	 * Instantiates a new shopping store containing a shopping cart and storeshelf.
+	 * Instantiates a new shopping store containing a shopping cart, storeshelf and payment counter.
 	 */
 	public ShoppingStore()
 	{
+		country = "Local";
 		sc = new ShoppingCart();
 		ss = new StoreShelf();
+		pc = new PaymentCounter(sc, country);
 		input = new Scanner(System.in);
 	}
 	
@@ -70,6 +79,15 @@ public class ShoppingStore
 	{
 		Product product = ss.searchAndRetrieveItemFromShelf(name, price, imported, quantity);
 		sc.addItemToCart(product);
+	}
+	
+	/**
+	 * Performs billing operation of purchased items and generates receipt.
+	 */
+	public void checkOut()
+	{
+		pc.billItemsInCart();
+		pc.getReceipt();
 	}
 	
 	/**

@@ -93,4 +93,28 @@ public class Biller
 		
 		return totalAmount;
 	}
+	
+	/**
+	 * Creates a new Receipt object.
+	 * 
+	 * @param productList - the products purchased
+	 * @param totalTax - the net tax cost
+	 * @param totalAmount - the net payable amount
+	 * @return Receipt
+	 */
+	public Receipt createNewReceipt(List<Product> productList, double totalTax, double totalAmount)
+	{
+		return new Receipt(productList, totalTax, totalAmount);
+	}
+	
+	/**
+	 * Prints out the receipt.
+	 * 
+	 * @param r - the Receipt to be printed
+	 */
+	public void generateReceipt(Receipt r)
+	{
+		String receipt = r.toString();
+		System.out.println(receipt);
+	}
 }

@@ -77,4 +77,25 @@ public class BillerTest {
 		assertEquals(82, b.calcTotalAmount(prodList), 0.0009);
 	}
 
+	/**
+	 * Test method for {@link com.salesapp.billingdomain.Biller#createNewReceipt(java.util.List, double, double)}.
+	 */
+	@Test
+	public void testCreateNewReceipt()
+	{
+		Receipt r = b.createNewReceipt(prodList, 9.00, 45.00);
+		assertEquals(2, r.getTotalNumberOfItems());
+		assertEquals(9.00, r.getTotalSalesTax(), 0.0009);
+		assertEquals(45.00, r.getTotalAmount(), 0.0009);
+	}
+	
+	/**
+	 * Test method for {@link com.salesapp.billingdomain.Biller#generateReceipt(Receipt))}.
+	 */
+	@Test
+	public void testGenerateReceipt()
+	{
+		Receipt r = b.createNewReceipt(prodList, 9.00, 45.00);
+		b.generateReceipt(r);
+	}
 }

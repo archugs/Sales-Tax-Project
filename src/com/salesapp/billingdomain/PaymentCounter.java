@@ -20,6 +20,7 @@ public class PaymentCounter
 {
 
 	private Biller b1;
+	private Receipt receipt;
 	private ShoppingCart cart;
 	private List<Product> productList;
 	private String country;
@@ -61,7 +62,18 @@ public class PaymentCounter
 	}
 	
 	/**
-	 * Gets the biller object to perform billing operatons.
+	 * Generates a new receipt for the products purchased with their taxes and net payable amount.
+	 */
+	public void getReceipt()
+	{
+		double totalTax = b1.calcTotalTax(productList);
+		double totalAmount = b1.calcTotalAmount(productList);
+		receipt = b1.createNewReceipt(productList, totalTax, totalAmount);
+		b1.generateReceipt(receipt);
+	}
+	
+	/**
+	 * Gets the biller object to perform billing operations.
 	 *
 	 * @param strategy - the regional strategy for tax calculations
 	 * @return Biller
