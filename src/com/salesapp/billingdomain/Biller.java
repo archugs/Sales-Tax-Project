@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.salesapp.products.Product;
 import com.salesapp.taxcalculations.ITaxCalculator;
+import com.salesapp.taxcalculations.MathHelper;
 
 /**
  * The Biller computes the product's taxed cost, the total tax value, and total amount of all products.
@@ -53,7 +54,7 @@ public class Biller
 	 */
 	public double calcTotalProductCost(double price, double tax)
 	{
-		return price + tax;
+		return MathHelper.truncate(price + tax);
 	}
 	
 	/**
@@ -72,7 +73,7 @@ public class Biller
 			totalTax += (p.getTaxedCost() - p.getPrice());
 		}
 		
-		return totalTax;
+		return MathHelper.truncate(totalTax);
 	}
 	
 	/**
@@ -91,7 +92,7 @@ public class Biller
 			totalAmount += p.getTaxedCost();
 		}
 		
-		return totalAmount;
+		return MathHelper.truncate(totalAmount);
 	}
 	
 	/**

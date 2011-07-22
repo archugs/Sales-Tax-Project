@@ -28,6 +28,9 @@ public class LocalTaxCalculator implements ITaxCalculator
 			tax += (price * 0.05);
 		}
 		
+		//rounds off to nearest 0.05 paise
+		tax = MathHelper.roundoff(tax);
+		
 		return tax;
 	}
 

@@ -56,7 +56,7 @@ public class BillerTest {
 	@Test
 	public void testCalcTotalProductCost() 
 	{
-		assertEquals(46.00, b.calcTotalProductCost(40.00, 6.00), 0.0009);
+		assertEquals(46.00, b.calcTotalProductCost(40.00, 6.00), 0);
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class BillerTest {
 	@Test
 	public void testCalcTotalTax()
 	{
-		assertEquals(12, b.calcTotalTax(prodList), 0.0009);
+		assertEquals(12, b.calcTotalTax(prodList), 0);
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class BillerTest {
 	@Test
 	public void testCalcTotalAmount() 
 	{
-		assertEquals(82, b.calcTotalAmount(prodList), 0.0009);
+		assertEquals(82, b.calcTotalAmount(prodList), 0);
 	}
 
 	/**
