@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.salesapp.billingdomain.PaymentCounter;
+import com.salesapp.billingdomain.Receipt;
 import com.salesapp.products.Product;
 
 
@@ -44,7 +45,7 @@ public class ShoppingStore
 		country = "Local";
 		sc = new ShoppingCart();
 		ss = new StoreShelf();
-		pc = new PaymentCounter(sc, country);
+		pc = new PaymentCounter(country);
 		input = new Scanner(System.in);
 	}
 	
@@ -86,8 +87,9 @@ public class ShoppingStore
 	 */
 	public void checkOut()
 	{
-		pc.billItemsInCart();
-		pc.getReceipt();
+		pc.billItemsInCart(sc);
+		Receipt receipt = pc.getReceipt();
+		pc.printReceipt(receipt);
 	}
 	
 	/**
@@ -228,4 +230,10 @@ public class ShoppingStore
 	{
 		return sc;
 	}
+
+	public PaymentCounter getPaymentCounter()
+	{
+		return pc;
+	}
 }
+

@@ -21,26 +21,25 @@ public class PaymentCounter
 
 	private Biller b1;
 	private Receipt receipt;
-	private ShoppingCart cart;
 	private List<Product> productList;
 	private String country;
 	
 	/**
 	 * Instantiates a new payment counter.
 	 *
-	 * @param cart - the shopping cart
 	 * @param country - the regional province for tax calculations
 	 */
-	public PaymentCounter(ShoppingCart cart, String country)
+	public PaymentCounter(String country)
 	{
-		this.cart = cart;
 		this.country = country;
 	}
 	
 	/**
 	 * Bills all the items in the shopping cart.
+	 * 
+	 * @param cart - the cart containing the items to be billed.
 	 */
-	public void billItemsInCart()
+	public void billItemsInCart(ShoppingCart cart)
 	{
 		//retrieves all the products from cart
 		productList = cart.getItemsFromCart();
@@ -63,12 +62,24 @@ public class PaymentCounter
 	
 	/**
 	 * Generates a new receipt for the products purchased with their taxes and net payable amount.
+	 * 
+	 * @return Receipt
 	 */
-	public void getReceipt()
+	public Receipt getReceipt()
 	{
 		double totalTax = b1.calcTotalTax(productList);
 		double totalAmount = b1.calcTotalAmount(productList);
 		receipt = b1.createNewReceipt(productList, totalTax, totalAmount);
+		return receipt;
+	}
+	
+	/**
+	 * Prints out the receipt
+	 * 
+	 * @param - the receipt to be printed
+	 */
+	public void printReceipt(Receipt receipt)
+	{
 		b1.generateReceipt(receipt);
 	}
 	

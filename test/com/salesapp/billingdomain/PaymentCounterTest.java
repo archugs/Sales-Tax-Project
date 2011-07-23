@@ -40,7 +40,7 @@ public class PaymentCounterTest
 		cart.addItemToCart(book);
 		cart.addItemToCart(food);
 		cart.addItemToCart(misc);
-		pay = new PaymentCounter(cart, "Local");
+		pay = new PaymentCounter("Local");
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class PaymentCounterTest
 	@Test
 	public void testBillItemsInCart() 
 	{
-		pay.billItemsInCart();
+		pay.billItemsInCart(cart);
 		assertEquals(42.00, book.getTaxedCost(), 0.0009);
 		assertEquals(30.00, food.getTaxedCost(), 0.0009);
 		assertEquals(97.9, misc.getTaxedCost(), 0.0009);
@@ -60,10 +60,11 @@ public class PaymentCounterTest
 	 * Test method for {@link com.salesapp.billingdomain.PaymentCounter#getReceipt()}.
 	 */
 	@Test
-	public void testGetReceipt()
+	public void testPrintReceipt()
 	{
-		pay.billItemsInCart();
-		pay.getReceipt();
+		pay.billItemsInCart(cart);
+		Receipt receipt = pay.getReceipt();
+		pay.printReceipt(receipt);
 	}
 
 }
