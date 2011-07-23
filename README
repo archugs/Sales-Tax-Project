@@ -1,0 +1,59 @@
+The Problem : Basic sales tax is applicable at a rate of 10% on all goods, except books,
+food, and medical products that are exempt. Import duty is an additional
+sales tax applicable on all imported goods at a rate of 5%, with no
+exemptions.
+
+When I purchase items I receive a receipt which lists the name of all the
+items and their price (including tax), finishing with the total cost of the
+items, and the total amounts of sales taxes paid. The rounding rules for
+sales tax are that for a tax rate of n%, a shelf price of p contains
+(np/100 rounded up to the nearest 0.05) amount of sales tax.
+
+Write an application that prints out the receipt details for these shopping
+baskets.
+
+The Solution : The two main functions to be performed to solve the above problem are:
+
+Getting the sales order through a CUI.
+Perform billing of the ordered items and generate a receipt containing details.
+
+The Design : The solution to the above problem can be modelled as a shopping store which contains :
+
+ A store shelf which is populated with various product items of the store.
+ A shopping cart to place the purchased items.
+ A payment counter which contains a biller to perform tax calculations and generates      a receipt.
+
+The sequence of activities performed are:
+The sales order of products is got from the customer through a CUI.
+The ordered items are searched and retrieved from the store shelf.
+These items are placed in a shopping cart.
+The shopping cart is taken to the payment counter where all the items are billed.
+The biller performs all calculations and a receipt containing all details is generated.
+
+Advantages of the design :
+
+The Product is an abstract superclass and the various types of products like Book, Food, Medical and other Miscellaneous products inherit from the Product class. This facilitates extensibility as a new Product type can be added in the future by just extending the Product class.
+The advantage of creating a separate class for each product type is, other attributes of the products can be added and they can be integrated with a database so as to facilitate creation of a 'search' module. Example : Book may have attributes like author name and publisher name using which a customer might want to search for a particular book.
+The creation of the new products is done using an Abstract Factory design pattern.
+
+		Abstract Factory - ProductFactory
+		Concrete Factory - BookProductFactory, FoodProductFactory, 									 MedicalProductFactory, MiscellaneousProductFactory
+		Abstract product - Product
+		Concrete Product - BookProduct, FoodProduct, MedicalProduct, 							     	 MiscellaneousProduct
+		Client 	     - StoreShelf
+
+	The advantage of using this pattern is, when new Products are added, there is no need to change existing client code. It is enough to create a new derived factory class.
+
+The tax calculations module is designed using the Strategy pattern.
+
+		Strategy 		- ITaxCalculator
+		Concrete Strategy - LocalTaxCalculator
+		Context		- Biller
+
+	The advantage of using this pattern is that we can add a new algorithm for tax calculation in the future easily and dynamically choose the algorithm(strategy) at runtime. The actual creation of a taxcalculator is delegated to a factory method.
+
+The LocalTaxValues is an enum which contains the tax values of various products as its elements. To add a new TaxValues for a new region/province, we can simply implement the ITaxValues interface.
+
+A MathHelper class provides rounding and truncating functions to assist in the tax calculations.
+
+The various combinations of input are tested using 'MainTest' Junit test case.
